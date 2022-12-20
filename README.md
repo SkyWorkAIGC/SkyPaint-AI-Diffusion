@@ -1,4 +1,5 @@
 # SkyPaint-Chinese-EN-v-1.0
+#### [English Document](README-EN.md)
 #### SkyPaint是由奇点智源开发的中英双语文本生成图像的项目，目前还在持续更新优化中
 - 项目地址: [SkyWorkAIGC-SkyPaint](https://github.com/SkyWorkAIGC/SkyPaint)
 
