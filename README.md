@@ -1,9 +1,31 @@
 # SkyPaint-Chinese-EN-v-1.0
 #### [English Document](README-EN.md)
-#### SkyPaint是由奇点智源开发的中英双语文本生成图像的项目，目前还在持续更新优化中
+#### SkyPaint是由奇点智源开发的中英双语文本生成图像的项目，目前还在持续更新优化中。
+#### 使用我们的模型，输入若干中文或英文的文本，便可让机器像人类画家一样，画出富有现代艺术风格的作品。下面是一些示例：
 
-# 模型介绍
-SkyPaint文本生成图片模型主要由两大部分组成，即提示词文本编码器模型和扩散模型两大部分。因此我们的优化也分为两步，首先基于[OpenAI-CLIP](https://github.com/openai/CLIP)优化了提示词文本编码器模型使得SkyPaint具有中英文识别能力，然后优化了扩散模型，使得SkyPaint具有现代艺术能力可以产生高质量图片。
+# 效果展示
+
+### 中文
+机械狗
+![](results/1.png)
+
+城堡 大海 夕阳 宫崎骏动画
+![](results/2.png)
+
+花落知多少
+![](results/3.png)
+
+半鸡半人，强壮
+![](results/4.png)
+
+鸡你太美
+![](results/5.png)
+
+
+# 模型优势
+SkyPaint文本生成图片模型主要由两大部分组成，即提示词文本编码器模型和扩散模型两大部分。因此我们的优化也分为两步：
+首先，基于[OpenAI-CLIP](https://github.com/openai/CLIP)优化了提示词文本编码器模型使得SkyPaint具有中英文识别能力，
+然后，优化了扩散模型，使得SkyPaint具有现代艺术能力可以产生高质量图片。
 
 # 模型功能
 * 支持汉语和英文以及中英文混合提示词输入
@@ -11,7 +33,32 @@ SkyPaint文本生成图片模型主要由两大部分组成，即提示词文本
 * 支持stable_diffusion_1.x官方模型及相关微调模型的英文提示词
 * 保留stable_diffusion提示词的使用习惯和方法
 
-### SkyCLIP模型简介
+# 测试用例
+
+模型下载地址 [SkyPaint-v1.0](https://sai-hk.oss-cn-hongkong.aliyuncs.com/zb/skypaint-v-1.0.zip?OSSAccessKeyId=LTAI5tHuxqp63n5qw5eeB6Ji&Expires=1673528832&Signature=4PTeknRoXuHWmeQHXqgu8kB0q%2Bw%3D) 
+
+```py
+from diffusers import StableDiffusionPipeline
+
+device = 'cuda'
+pipe = StableDiffusionPipeline.from_pretrained("path_to_our_model").to(device)
+
+prompts = [
+    '机械狗',
+    '城堡 大海 夕阳 宫崎骏动画',
+    '花落知多少',
+    '鸡你太美',
+]
+
+for prompt in prompts:
+    prompt = 'sai-v1 art, ' + prompt
+    image = pipe(prompt).images[0]  
+    image.save("%s.jpg" % prompt)
+```
+
+————————————————————————————————————————————————
+
+# SkyCLIP模型简介
 SkyCLIP是我们采用一种高效的训练中英双语CLIP模型的方法得到的CLIP模型，该方法仅需要使用文本数据即可实现对[OpenAI-CLIP](https://github.com/openai/CLIP)模型的高效蒸馏，大幅降低了数据门槛，同时训练所需算力要求相较于原始CLIP模型减少90%以上，方便开源社区可以进行复现/微调。该方法仅改变了OpenAI-CLIP的文本编码器，可搭配使用OpenAI-CLIP的图像编码器实现图文检索功能。
 
 ### SkyCLIP训练数据来源
@@ -110,46 +157,6 @@ with torch.no_grad():
 预训练模型采用了[stable-diffusion-v1-5](https://huggingface.co/runwayml/stable-diffusion-v1-5) 作为预训练，使用了16块A100训练了50个小时。
 目前模型还在持续优化中，后续会有更稳定的模型更新
 
-# 效果展示
-
-### 中文
-机械狗
-![](results/1.png)
-
-城堡 大海 夕阳 宫崎骏动画
-![](results/2.png)
-
-花落知多少
-![](results/3.png)
-
-半鸡半人，强壮
-![](results/4.png)
-
-鸡你太美
-![](results/5.png)
-
-## 测试用例
-
-模型下载地址 [SkyPaint-v1.0](https://sai-hk.oss-cn-hongkong.aliyuncs.com/zb/skypaint-v-1.0.zip?OSSAccessKeyId=LTAI5tHuxqp63n5qw5eeB6Ji&Expires=1673528832&Signature=4PTeknRoXuHWmeQHXqgu8kB0q%2Bw%3D) 
-
-```py
-from diffusers import StableDiffusionPipeline
-
-device = 'cuda'
-pipe = StableDiffusionPipeline.from_pretrained("path_to_our_model").to(device)
-
-prompts = [
-    '机械狗',
-    '城堡 大海 夕阳 宫崎骏动画',
-    '花落知多少',
-    '鸡你太美',
-]
-
-for prompt in prompts:
-    prompt = 'sai-v1 art, ' + prompt
-    image = pipe(prompt).images[0]  
-    image.save("%s.jpg" % prompt)
-```
 
 # License
 - [MIT License](LICENSE)
