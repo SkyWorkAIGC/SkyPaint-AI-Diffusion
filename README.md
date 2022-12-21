@@ -1,7 +1,6 @@
 # SkyPaint-Chinese-EN-v-1.0
 #### [English Document](README-EN.md)
 #### SkyPaint是由奇点智源开发的中英双语文本生成图像的项目，目前还在持续更新优化中
-- 项目地址: [SkyWorkAIGC-SkyPaint](https://github.com/SkyWorkAIGC/SkyPaint)
 
 # 模型介绍
 SkyPaint文本生成图片模型主要由两大部分组成，即提示词文本编码器模型和扩散模型两大部分。因此我们的优化也分为两步，首先基于[OpenAI-CLIP](https://github.com/openai/CLIP)优化了提示词文本编码器模型使得SkyPaint具有中英文识别能力，然后优化了扩散模型，使得SkyPaint具有现代艺术能力可以产生高质量图片。
