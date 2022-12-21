@@ -1,5 +1,6 @@
 # SkyPaint-Chinese-EN-v-1.0
 #### [English Document](README-EN.md)
+#### Hugging Face 模型主页：[链接](https://huggingface.co/SkyWork/SkyPaint)
 #### SkyPaint是由奇点智源开发的中英双语文本生成图像的项目，目前还在持续更新优化中。
 #### 使用我们的模型，输入若干中文或英文的文本，便可让机器像人类画家一样，画出富有现代艺术风格的作品。下面是一些示例：
 
