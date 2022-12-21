@@ -155,7 +155,7 @@ with torch.no_grad():
 ### 扩散模型 Diffusion Model
 我们的数据采用了筛选过的Laion数据集作为训练数据，同时在文本前面加上了 'sai-v1 art' 作为tag使模型能够更快速的学习到我们想要的风格及质量。
 预训练模型采用了[stable-diffusion-v1-5](https://huggingface.co/runwayml/stable-diffusion-v1-5) 作为预训练，使用了16块A100训练了50个小时。
-目前模型还在持续优化中，后续会有更稳定的模型更新
+目前模型还在持续优化中，后续会有更稳定的模型更新。
 
 
 # License
