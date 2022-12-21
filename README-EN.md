@@ -61,7 +61,7 @@ for prompt in prompts:
 # Introduction to SkyCLIP Models
 SkyCLIP is a CLIP model obtained by using an efficient method of training Chinese-English bilingual CLIP models. This method only needs to use text data to achieve efficient distillation of the OpenAI-CLIP model, which greatly reduces the data threshold. At the same time, training requires Compared with the original CLIP model, the computing power requirement is reduced by more than 90%, which is convenient for the open source community to reproduce/fine-tune. This method only changes the text encoder of OpenAI-CLIP, and can be used with the image encoder of OpenAI-CLIP to realize the image-text retrieval function.
 
-# SkyCLIP training data source
+### SkyCLIP training data source
 * Chinese-English Machine Translation Task Parallel Corpus.
 * United Nations Chinese-English Parallel Corpus.
 * LAION Chinese and English Corpus (Part).
@@ -70,10 +70,10 @@ SkyCLIP is a CLIP model obtained by using an efficient method of training Chines
 * Chinese and English corpus of ancient poetry.
 * A Chinese and English corpus composed of common words in the prompt word handbook/magic book.
 
-# SkyCLIP training method
+### SkyCLIP training method
 Use the text_encoder of OpenAI-CLIP as the teacher model and freeze the parameters. The student model uses a multilingual BERT model of the same size as the teacher model. During training, the English input is obtained through the teacher model to obtain the corresponding t_en_hiddent_state, and English and Chinese are respectively obtained through the student model. The corresponding s_en_hiddent_state, s_zh_hidden_state uses l1, l2, cos distance, etc. to construct loss functions so that the Chinese and English hidden_state of the student model gradually approaches the hidden_state of the teacher model. Due to the natural unequal length of Chinese and English in the parallel corpus, in order to make the parallel Chinese and English as close as possible, we also added a Chinese decoder during the training process, and used the Chinese and English hidden_state of the student model as the hidden_state input of the decoder. The translation task is used to assist in the alignment of Chinese and English.
 
-# SkyCLIP Model Evaluation
+### SkyCLIP Model Evaluation
 At present, we mainly evaluate the zero-shot performance of SkyCLIP on Flickr30K-CN, and mainly compare several related open source models with Chinese capabilities. For the L/14 size model, our evaluation process refers to the evaluation script provided by Chinese-CLIP.
 
 **Flickr30K-CN Retrieval**:
@@ -109,7 +109,7 @@ At present, we mainly evaluate the zero-shot performance of SkyCLIP on Flickr30K
 </table>
 <br>
 
-# SkyCLIP calculates image-text similarity
+### SkyCLIP calculates image-text similarity
 ```py
 from PIL import Image
 import requests
@@ -151,8 +151,7 @@ with torch.no_grad():
 
 ```
 
-
-# Diffusion Model
+### Diffusion Model
 Our data uses the filtered Laion data set as the training data, and adds 'sai-v1 art' as the tag in front of the text so that the model can learn the style and quality we want more quickly. The pre-training model uses [stable-diffusion-v1-5](https://huggingface.co/runwayml/stable-diffusion-v1-5) as pre-training, and uses 16 A100s for 50 hours of training. The current model is still being optimized, and there will be more stable model updates in the future.
 
 
