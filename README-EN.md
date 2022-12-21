@@ -1,7 +1,6 @@
 # SkyPaint-Chinese-EN-v-1.0
 #### For [Chinese Document](README.md)
 #### SkyPaint is a Chinese-English bilingual text-generated image project developed by Singularity-AI. It is still being updated and optimized.
-- View the project: [SkyWorkAIGC-SkyPaint](https://github.com/SkyWorkAIGC/SkyPaint)
 
 # Model Introduction
 The SkyPaint text generation image model is mainly composed of two parts, namely the prompt word text encoder model and the diffusion model. Therefore, our optimization is also divided into two steps. First, based on OpenAI-CLIP, we optimized the prompt word text encoder model to make SkyPaint have the ability to recognize Chinese and English, and then optimized the diffusion model, so that SkyPaint has modern artistic capabilities and can produce high-quality pictures.
