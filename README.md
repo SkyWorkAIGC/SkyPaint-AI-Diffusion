@@ -24,6 +24,12 @@
 ![](results/5.png)
 
 
+# Trial and experience
+
+Please visit [SkyPaint](https://sky-paint.singularity-ai.com/index.html#/)
+![image](https://user-images.githubusercontent.com/120169448/208892170-836c2c5f-f6ba-4956-978f-dd392c508bce.png)
+
+
 # Model Advantages
 The SkyPaint text generation image model is mainly composed of two parts, namely the prompt word text encoder model and the diffusion model. Therefore, our optimization is also divided into two steps. First, based on OpenAI-CLIP, we optimized the prompt word text encoder model to make SkyPaint have the ability to recognize Chinese and English, and then optimized the diffusion model, so that SkyPaint has modern artistic capabilities and can produce high-quality pictures.
 
