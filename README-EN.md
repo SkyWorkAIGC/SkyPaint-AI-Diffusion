@@ -27,8 +27,8 @@
 The SkyPaint text generation image model is mainly composed of two parts, namely the prompt word text encoder model and the diffusion model. Therefore, our optimization is also divided into two steps. First, based on OpenAI-CLIP, we optimized the prompt word text encoder model to make SkyPaint have the ability to recognize Chinese and English, and then optimized the diffusion model, so that SkyPaint has modern artistic capabilities and can produce high-quality pictures.
 
 # Model Function
-* Chinese and English and Chinese and English mixed prompt word input.
-* Generating high-quality images in a modern art style.
+* Chinese and English mixed prompt word input.
+* Generating high-quality images in a modern art styles.
 * English prompt words for stable_diffusion_1.x official model and related fine-tuning models.
 * Retain usage habits and methods of stable_diffusion prompt words.
 
