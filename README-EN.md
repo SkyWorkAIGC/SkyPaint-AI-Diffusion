@@ -1,8 +1,29 @@
 # SkyPaint-Chinese-EN-v-1.0
 #### For [Chinese Document](README.md)
-#### SkyPaint is a Chinese-English bilingual text-generated image project developed by Singularity-AI. It is still being updated and optimized.
 
-# Model Introduction
+#### SkyPaint is a Chinese-English bilingual text-generated image project developed by Singularity-AI. It is still being updated and optimized. 
+#### Using our model, input some Chinese or English text, then the machine can generate images with modern artistic style just like human painters. Here are some examples:
+
+# Show Cases
+
+### Chinese
+机械狗
+![](results/1.png)
+
+城堡 大海 夕阳 宫崎骏动画
+![](results/2.png)
+
+花落知多少
+![](results/3.png)
+
+半鸡半人，强壮
+![](results/4.png)
+
+鸡你太美
+![](results/5.png)
+
+
+# Model Advantages
 The SkyPaint text generation image model is mainly composed of two parts, namely the prompt word text encoder model and the diffusion model. Therefore, our optimization is also divided into two steps. First, based on OpenAI-CLIP, we optimized the prompt word text encoder model to make SkyPaint have the ability to recognize Chinese and English, and then optimized the diffusion model, so that SkyPaint has modern artistic capabilities and can produce high-quality pictures.
 
 # Model Function
@@ -11,10 +32,36 @@ The SkyPaint text generation image model is mainly composed of two parts, namely
 * English prompt words for stable_diffusion_1.x official model and related fine-tuning models.
 * Retain usage habits and methods of stable_diffusion prompt words.
 
-### Introduction to SkyCLIP Models
+
+# Test cases
+
+Download model: [SkyPaint-v1.0](https://sai-hk.oss-cn-hongkong.aliyuncs.com/zb/skypaint-v-1.0.zip?OSSAccessKeyId=LTAI5tHuxqp63n5qw5eeB6Ji&Expires=1673528832&Signature=4PTeknRoXuHWmeQHXqgu8kB0q%2Bw%3D) 
+
+```py
+from diffusers import StableDiffusionPipeline
+
+device = 'cuda'
+pipe = StableDiffusionPipeline.from_pretrained("path_to_our_model").to(device)
+
+prompts = [
+    '机械狗',
+    '城堡 大海 夕阳 宫崎骏动画',
+    '花落知多少',
+    '鸡你太美',
+]
+
+for prompt in prompts:
+    prompt = 'sai-v1 art, ' + prompt
+    image = pipe(prompt).images[0]  
+    image.save("%s.jpg" % prompt)
+```
+
+————————————————————————————————————————————————————————————
+
+# Introduction to SkyCLIP Models
 SkyCLIP is a CLIP model obtained by using an efficient method of training Chinese-English bilingual CLIP models. This method only needs to use text data to achieve efficient distillation of the OpenAI-CLIP model, which greatly reduces the data threshold. At the same time, training requires Compared with the original CLIP model, the computing power requirement is reduced by more than 90%, which is convenient for the open source community to reproduce/fine-tune. This method only changes the text encoder of OpenAI-CLIP, and can be used with the image encoder of OpenAI-CLIP to realize the image-text retrieval function.
 
-### SkyCLIP training data source
+# SkyCLIP training data source
 * Chinese-English Machine Translation Task Parallel Corpus.
 * United Nations Chinese-English Parallel Corpus.
 * LAION Chinese and English Corpus (Part).
@@ -23,10 +70,10 @@ SkyCLIP is a CLIP model obtained by using an efficient method of training Chines
 * Chinese and English corpus of ancient poetry.
 * A Chinese and English corpus composed of common words in the prompt word handbook/magic book.
 
-### SkyCLIP training method
+# SkyCLIP training method
 Use the text_encoder of OpenAI-CLIP as the teacher model and freeze the parameters. The student model uses a multilingual BERT model of the same size as the teacher model. During training, the English input is obtained through the teacher model to obtain the corresponding t_en_hiddent_state, and English and Chinese are respectively obtained through the student model. The corresponding s_en_hiddent_state, s_zh_hidden_state uses l1, l2, cos distance, etc. to construct loss functions so that the Chinese and English hidden_state of the student model gradually approaches the hidden_state of the teacher model. Due to the natural unequal length of Chinese and English in the parallel corpus, in order to make the parallel Chinese and English as close as possible, we also added a Chinese decoder during the training process, and used the Chinese and English hidden_state of the student model as the hidden_state input of the decoder. The translation task is used to assist in the alignment of Chinese and English.
 
-### SkyCLIP Model Evaluation
+# SkyCLIP Model Evaluation
 At present, we mainly evaluate the zero-shot performance of SkyCLIP on Flickr30K-CN, and mainly compare several related open source models with Chinese capabilities. For the L/14 size model, our evaluation process refers to the evaluation script provided by Chinese-CLIP.
 
 **Flickr30K-CN Retrieval**:
@@ -62,7 +109,7 @@ At present, we mainly evaluate the zero-shot performance of SkyCLIP on Flickr30K
 </table>
 <br>
 
-### SkyCLIP calculates image-text similarity
+# SkyCLIP calculates image-text similarity
 ```py
 from PIL import Image
 import requests
@@ -105,49 +152,9 @@ with torch.no_grad():
 ```
 
 
-### Diffusion Model
+# Diffusion Model
 Our data uses the filtered Laion data set as the training data, and adds 'sai-v1 art' as the tag in front of the text so that the model can learn the style and quality we want more quickly. The pre-training model uses [stable-diffusion-v1-5](https://huggingface.co/runwayml/stable-diffusion-v1-5) as pre-training, and uses 16 A100s for 50 hours of training. The current model is still being optimized, and there will be more stable model updates in the future.
 
-# Show Cases
-
-### Chinese
-机械狗
-![](results/1.png)
-
-城堡 大海 夕阳 宫崎骏动画
-![](results/2.png)
-
-花落知多少
-![](results/3.png)
-
-半鸡半人，强壮
-![](results/4.png)
-
-鸡你太美
-![](results/5.png)
-
-## Test cases
-
-Download model: [SkyPaint-v1.0](https://sai-hk.oss-cn-hongkong.aliyuncs.com/zb/skypaint-v-1.0.zip?OSSAccessKeyId=LTAI5tHuxqp63n5qw5eeB6Ji&Expires=1673528832&Signature=4PTeknRoXuHWmeQHXqgu8kB0q%2Bw%3D) 
-
-```py
-from diffusers import StableDiffusionPipeline
-
-device = 'cuda'
-pipe = StableDiffusionPipeline.from_pretrained("path_to_our_model").to(device)
-
-prompts = [
-    '机械狗',
-    '城堡 大海 夕阳 宫崎骏动画',
-    '花落知多少',
-    '鸡你太美',
-]
-
-for prompt in prompts:
-    prompt = 'sai-v1 art, ' + prompt
-    image = pipe(prompt).images[0]  
-    image.save("%s.jpg" % prompt)
-```
 
 # License
 - [MIT License](LICENSE)
