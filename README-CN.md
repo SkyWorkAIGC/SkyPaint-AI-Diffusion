@@ -27,6 +27,9 @@
 请访问[天工巧绘SkyPaint](https://sky-paint.singularity-ai.com/index.html#/)
 ![image](https://user-images.githubusercontent.com/120169448/208891864-a7a8aaf9-b090-4092-b1cd-06860c042cf6.png)
 
+你也可以微信扫描二维码，在小程序上体验：
+![gh_0e89c7c92d3f_430](https://user-images.githubusercontent.com/120169448/209091858-d37ef96d-598b-4c42-bcac-c9c9b99d76f0.jpg)
+
 
 # 模型优势
 SkyPaint文本生成图片模型主要由两大部分组成，即提示词文本编码器模型和扩散模型两大部分。因此我们的优化也分为两步：
