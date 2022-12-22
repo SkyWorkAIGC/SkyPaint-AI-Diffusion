@@ -23,7 +23,8 @@
 鸡你太美
 ![](results/5.png)
 
-You can also can the QR code below with WeChat to experience it.
+
+#### You can also can the QR code below with WeChat to experience the model.
 ![gh_0e89c7c92d3f_430](https://user-images.githubusercontent.com/120169448/209092358-7556d2ea-6374-4235-b2ee-77665f066d2c.jpg)
 
 
