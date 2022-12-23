@@ -168,3 +168,8 @@ Our data uses the filtered Laion data set as the training data, and adds 'sai-v1
 # License
 - [MIT License](LICENSE)
 - [CreativeML Open RAIL-M](LICENSE-MODEL)
+
+# Developer group
+#### Scan the QR code below with WeChat to join in the developer group:
+![img_v2_cac98184-bd83-4edc-9183-4e8be457588g](https://user-images.githubusercontent.com/120169448/209295712-449d462f-896c-4d54-b497-fe315145aade.png)
+
