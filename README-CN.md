@@ -173,6 +173,5 @@ with torch.no_grad():
 
 # 加入开发者群
 #### 微信扫码，加入开发者群——
-![img_v2_cac98184-bd83-4edc-9183-4e8be457588g](https://user-images.githubusercontent.com/120169448/209295500-d06bf019-ecd6-4ea0-986c-7061a497b3b0.png)
-
+![paint](https://user-images.githubusercontent.com/120169448/211474094-7e8f88f4-e8ec-4db6-baab-dc3d2022b877.jpg)
 
