@@ -168,7 +168,6 @@ with torch.no_grad():
 
 
 # License
-- [MIT License](LICENSE)
 - [CreativeML Open RAIL-M](LICENSE-MODEL)
 
 # 加入开发者群
