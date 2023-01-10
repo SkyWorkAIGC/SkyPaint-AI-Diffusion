@@ -166,7 +166,6 @@ Our data uses the filtered Laion data set as the training data, and adds 'sai-v1
 
 
 # License
-- [MIT License](LICENSE)
 - [CreativeML Open RAIL-M](LICENSE-MODEL)
 
 # Developer group
