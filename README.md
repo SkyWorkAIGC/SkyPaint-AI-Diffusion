@@ -1,5 +1,5 @@
 # SkyPaint-Chinese-EN-v-1.0
-#### For [Chinese Document]([README.md](https://github.com/SkyWorkAIGC/SkyPaint-AI-Diffusion/blob/main/README-CN.md))
+#### For [Chinese Document](https://github.com/SkyWorkAIGC/SkyPaint-AI-Diffusion/blob/main/README-CN.md)
 #### Hugging Face Home Page: [Link](https://huggingface.co/SkyWork/SkyPaint)
 
 #### SkyPaint is a Chinese-English bilingual text-generated image project developed by Singularity-AI. It is still being updated and optimized. 
