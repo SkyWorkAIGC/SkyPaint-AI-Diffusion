@@ -44,7 +44,7 @@ SkyPaint文本生成图片模型主要由两大部分组成，即提示词文本
 
 # 测试用例
 
-模型下载地址 [SkyPaint-v1.0](https://sai-hk.oss-cn-hongkong.aliyuncs.com/zb/skypaint-v-1.0.zip?OSSAccessKeyId=LTAI5tHuxqp63n5qw5eeB6Ji&Expires=1673528832&Signature=4PTeknRoXuHWmeQHXqgu8kB0q%2Bw%3D) 
+模型下载地址 [SkyPaint-v1.0](https://huggingface.co/SkyWork/SkyPaint) 
 
 ```py
 from diffusers import StableDiffusionPipeline
